@@ -1,14 +1,15 @@
 import {defineField, defineType} from 'sanity'
 
 export default {
-    name: 'pet',
+    name: 'interest',
     type: 'document',
-    title: 'Pet',
+    title: 'Interest',
     fields: [
         {
             name: 'name',
+            title: 'Name',
             type: 'string',
-            title: 'Name'
+            validation: (Rule: { required: () => any }) => Rule.required()
         }
     ]
 }
