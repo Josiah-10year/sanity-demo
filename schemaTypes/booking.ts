@@ -15,13 +15,10 @@ export default {
         {
             name: 'court',
             title: 'Court',
-            type: 'string',
+            type: 'reference',
+            to: [{type:'court'}],
             options: {
-                list: [
-                    {title: 'A', value: 'a'},
-                    {title: 'B', value: 'b'},
-                    {title: 'C', value: 'c'}
-                ]
+                layout: 'tags',
             },
             validation: (Rule: { required: () => any }) => Rule.required()
         },
@@ -39,6 +36,31 @@ export default {
             initialValue: (new Date()).toISOString(),
             validation: (Rule: { required: () => any }) => Rule.required()
         },
-        
+        {
+            name: 'type',
+            title: 'Type of Booking',
+            description: 'Private booking are closed and only for you. Open bookings remain open until 4 persons have booked it',
+            type: 'string',                   
+            options: {
+                list: [
+                    {title: 'Open', value: 'open'},
+                    {title: 'Private', value: 'private'}
+                ],
+                layout: 'radio'
+            },
+            validation: (Rule: { required: () => any }) => Rule.required()
+        },
+        {
+            name: 'numPeople',
+            title: 'Number of Persons',
+            type: 'number',
+            validation: (Rule: { required: () => any }) => Rule.required()
+            // validation: (Rule: any)  => {Rule.required().custom((context: any) => {
+            //     if (context.document.type == 'open' && context.document.numPeople > 4) {
+            //         return 'Only private bookings can have more than 4 people'
+            //     }                
+            //     return true
+            //   })}
+        }
     ]
 }
