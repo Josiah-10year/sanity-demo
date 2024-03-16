@@ -29,19 +29,9 @@ export default {
         {
             name: 'topic',
             title: 'Topic',
-            type: 'string',
+            type: 'reference',
+            to: [{type: 'topic'}],
             description: 'The topic the post will be posted under',
-            options: {
-                list: [
-                    {title: 'General Discussion', value: 'general'},
-                    {title: 'Everything Tennis', value: 'tennis'},
-                    {title: 'Hobbies & Lifestyle', value: 'lifestyle'},
-                    {title: 'Entertainment', value: 'entertainment'},
-                    {title: 'Wellness', value: 'wellness'},
-                    {title: 'Technology', value: 'tech'},
-                    {title: 'Off-Topic', value: 'offtopic'}
-                ]
-            },
             validation: (Rule: { required: () => any }) => Rule.required()
         },
         {

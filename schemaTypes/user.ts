@@ -34,14 +34,6 @@ export default {
     title: 'User',
     fields: [
         {
-            name: 'role',
-            title: 'Role',
-            type: 'string',
-            readOnly: true,
-            initialValue: 'user',
-            validation: (Rule: { required: () => any }) => Rule.required()
-        },
-        {
             name: 'firstName',
             title: 'First Name',
             type: 'string',
@@ -93,19 +85,12 @@ export default {
             type: 'array',
             of: [
                 {
-                    type: 'string'
+                    type: 'reference',
+                    to: [{type: 'topic'}],
                 }
-            ],                    
+            ],
             options: {
-                list: [
-                    {title: 'General Discussion', value: 'general'},
-                    {title: 'Everything Tennis', value: 'tennis'},
-                    {title: 'Hobbies & Lifestyle', value: 'lifestyle'},
-                    {title: 'Entertainment', value: 'entertainment'},
-                    {title: 'Wellness', value: 'wellness'},
-                    {title: 'Technology', value: 'tech'},
-                    {title: 'Off-Topic', value: 'offtopic'}
-                ]
+                layout: 'tags',
             }
         },
         {
@@ -123,6 +108,14 @@ export default {
             options: {
                 layout: 'tags',
             }
+        },
+        {
+            name: 'role',
+            title: 'Role',
+            type: 'string',
+            readOnly: true,
+            initialValue: 'user',
+            validation: (Rule: { required: () => any }) => Rule.required()
         }
     ]
 }
