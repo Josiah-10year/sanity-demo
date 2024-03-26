@@ -39,6 +39,16 @@ export default {
             validation: (Rule: { required: () => any }) => Rule.required()            
         },
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+                source: 'title',
+                slugify: (input: string) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 200)
+            },
+            validation: (Rule: { required: () => any }) => Rule.required() 
+        },
+        {
             name: 'description',
             title: 'Description',
             type: 'text',            
